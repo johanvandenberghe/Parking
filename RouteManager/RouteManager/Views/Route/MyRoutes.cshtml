@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Route Management";
+}
+@model IEnumerable<RouteManager.ViewModels.RouteViewModel>
+
+<div class="text-center">
+    <h1 class="display-4">Routes</h1>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Route" asp-action="Edit">Create route</a>
+    
+    @if(Model != null && Model.Any())
+    {
+    <table>
+    <tr>
+    <th>Route Name</th>
+    <th>Depart parking</th>
+    <th>Destination parking</th>
+    <th>Distance</th>
+    <th>Consomation</th>
+    <th></th>
+    </tr>
+      @foreach (var route in Model)
+      {
+        <tr>
+        <td>@route.Name</td>
+        <td>@route.DepartureParking.Name</td>
+        <td>@route.ArrivalParking.Name</td>
+        <td>@route.Distance</td>
+        <td>@route.Conso</td>
+        <td>
+        <a asp-controller="Route" asp-action="edit" asp-route-routeid="@route.Id">Edit</a> |
+                    @*<a  asp-controller="Route" asp-action="Details" asp-route-id="@route.Id">Details</a> |*@
+                    <a onclick="" asp-controller="Route" asp-action="delete" asp-route-routeid="@route.Id">Delete</a>
+                </td>
+            </tr>
+       }
+    </table>
+    }
+    else
+    {
+        <p>There is no route</p>
+    }
+</div>

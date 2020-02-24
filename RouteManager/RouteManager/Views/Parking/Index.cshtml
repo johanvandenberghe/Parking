@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Parkings Page";
+}
+@model IEnumerable<RouteManager.ViewModels.ParkingViewModel>
+
+    <div class="text-center">
+        <h1 class="display-4">Parkings :</h1>
+        
+        <table>
+            <tr>
+                <th>Parking Name</th>
+            </tr>
+            @foreach (var parking in Model)
+            {
+                <tr>
+                    <td>@parking.Name</td>
+                </tr>
+            }
+        </table>
+    </div>

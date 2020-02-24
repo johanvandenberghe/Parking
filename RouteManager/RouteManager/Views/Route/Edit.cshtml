@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Route Management";
+}
+@model RouteManager.ViewModels.EditRouteViewModel
+
+    <div class="text-center">
+        <h1 class="display-4">Routes</h1>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="CreateOrUpadateRoute" method="post" asp-controller="route">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="RouteId" />
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Departure parking</label>
+                        <select asp-for="DepartureParkingId" asp-items="@Model.DepartureParkings">
+                            <option>Please select one</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Destination parking</label>
+                        <select asp-for="ArrivalParkingId" asp-items="@Model.DestinationParkings">
+                            <option>Please select one</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Car</label>
+                        <select asp-for="CarId" asp-items="@Model.Cars">
+                            <option>Please select one</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
